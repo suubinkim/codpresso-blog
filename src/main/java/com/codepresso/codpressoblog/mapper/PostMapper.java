@@ -15,4 +15,6 @@ public interface PostMapper {
     Post findOne(@Param("id") Integer id);
 
     Integer save(@Param("post") Post post);
+
+    Integer update(@Param("post") Post post);
 }

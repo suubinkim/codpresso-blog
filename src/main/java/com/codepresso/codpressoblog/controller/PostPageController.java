@@ -25,4 +25,11 @@ public class PostPageController {
         return "post_write";
     }
 
+    @RequestMapping("/post/edit/{id}")
+    public String getPostEditPage(Model model, @PathVariable Integer id) {
+        Post postById = postService.getPostById(id);
+        model.addAttribute("post", postById);
+        return "post_edit";
+    }
+
 }

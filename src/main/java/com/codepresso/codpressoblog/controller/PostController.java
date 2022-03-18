@@ -32,4 +32,11 @@ public class PostController {
         postService.savePost(post);
         return "success";
     }
+
+    @PutMapping("/post")
+    public String updatePost(@RequestBody PostRequestDto requestDto) {
+        Post post = requestDto.getPost();
+        postService.updatePost(post);
+        return "success";
+    }
 }

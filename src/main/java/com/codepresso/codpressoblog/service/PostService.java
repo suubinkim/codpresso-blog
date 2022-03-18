@@ -1,6 +1,5 @@
 package com.codepresso.codpressoblog.service;
 
-import com.codepresso.codpressoblog.controller.dto.PostRequestDto;
 import com.codepresso.codpressoblog.mapper.PostMapper;
 import com.codepresso.codpressoblog.vo.Post;
 import lombok.RequiredArgsConstructor;
@@ -26,8 +25,12 @@ public class PostService {
         return postMapper.findOne(id);
     }
 
-    public boolean savePost(Post post) {
-        Integer result = postMapper.save(post);
-        return result == 1;
+    public void savePost(Post post) {
+        postMapper.save(post);
     }
+
+    public void updatePost(Post post) {
+        postMapper.update(post);
+    }
+
 }
