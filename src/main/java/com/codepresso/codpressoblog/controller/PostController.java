@@ -1,12 +1,11 @@
 package com.codepresso.codpressoblog.controller;
 
+import com.codepresso.codpressoblog.controller.dto.PostRequestDto;
 import com.codepresso.codpressoblog.controller.dto.PostResponseDto;
 import com.codepresso.codpressoblog.service.PostService;
 import com.codepresso.codpressoblog.vo.Post;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,5 +24,12 @@ public class PostController {
             dtoList.add(new PostResponseDto(post));
         }
         return dtoList;
+    }
+
+    @PostMapping("/post")
+    public String createPost(@RequestBody PostRequestDto requestDto) {
+        Post post = requestDto.getPost();
+        postService.savePost(post);
+        return "success";
     }
 }
